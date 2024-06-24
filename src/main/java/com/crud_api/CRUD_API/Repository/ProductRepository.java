@@ -15,12 +15,18 @@ public class ProductRepository {
     }
 
     public List<Product> getAllProduct(){
-        return jdbcClient.sql("SELECT * FROM Product").query(Product.class).list();
+        String sql = "SELECT * FROM Product";
+        return jdbcClient.sql(sql)
+                .query(Product.class)
+                .list();
     }
 
     public Product getProductById(Integer id){
         String sql = "SELECT * FROM Product WHERE id = ?";
-        return jdbcClient.sql(sql).param(id).query(Product.class).single();
+        return jdbcClient.sql(sql)
+                .param(id)
+                .query(Product.class)
+                .single();
     }
 
     public void insertProduct(Product product){
@@ -34,11 +40,17 @@ public class ProductRepository {
 
     public void  updateProduct(Integer id,Product product){
         String sql = "UPDATE product SET name = ?, price = ? WHERE id = ?";
-        jdbcClient.sql(sql).param(product.getName()).param(product.getPrice()).param(id).update();
+        jdbcClient.sql(sql)
+                .param(product.getName())
+                .param(product.getPrice())
+                .param(id)
+                .update();
     }
 
     public void deleteProduct(Integer id){
         String sql = "DELETE FROM product WHERE id = ?";
-        jdbcClient.sql(sql).param(id).update();
+        jdbcClient.sql(sql)
+                .param(id)
+                .update();
     }
 }
