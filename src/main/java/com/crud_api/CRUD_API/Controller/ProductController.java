@@ -9,15 +9,15 @@ import java.util.List;
 @RequestMapping("/api/product")
 public class ProductController {
 
-    @GetMapping("")
-    List<Product> getProductList(){
-
-    }
-
-    @GetMapping("/{id}")
-    Product getProductById(@PathVariable Integer id){
-
-    }
+//    @GetMapping("")
+//    List<Product> getProductList(){
+//
+//    }
+//
+//    @GetMapping("/{id}")
+//    Product getProductById(@PathVariable Integer id){
+//
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
