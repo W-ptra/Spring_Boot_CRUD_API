@@ -3,20 +3,16 @@ package com.crud_api.CRUD_API;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.UUID;
-
 @Component
 @Scope("prototype")
 public class Product {
 
-    private String id;
+    private Integer id;
     private String name;
     private Integer price;
-    private String created;
 
-    public void setUUID() {
-        this.id = java.util.UUID.randomUUID().toString();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -27,11 +23,7 @@ public class Product {
         this.price = price;
     }
 
-    public void setCreated() {
-        this.created = new Date().toString();
-    }
-
-    public String getUUID() {
+    public Integer getId() {
         return id;
     }
 
@@ -41,9 +33,5 @@ public class Product {
 
     public Integer getPrice() {
         return price;
-    }
-
-    public String getCreated() {
-        return created;
     }
 }

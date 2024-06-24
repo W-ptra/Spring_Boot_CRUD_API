@@ -1,14 +1,9 @@
 package com.crud_api.CRUD_API.Repository;
-
 import com.crud_api.CRUD_API.Product;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
-
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public class ProductRepository {
@@ -19,23 +14,31 @@ public class ProductRepository {
         this.jdbcClient = jdbcClient;
     }
 
-    public void test(Product product){
-        System.out.println(product.getName());
-    }
-
-    public List<Product> findAll(){
+    public List<Product> getAllProduct(){
         return jdbcClient.sql("SELECT * FROM Product").query(Product.class).list();
     }
 
-    public void insert(Product product){
-        String sql = "INSERT INTO Product (id, name, price, created) VALUES (?, ?, ?, ?)";
+    public Product getProductById(Integer id){
+        String sql = "SELECT * FROM Product WHERE id = ?";
+        return jdbcClient.sql(sql).param(id).query(Product.class).single();
+    }
+
+    public void insertProduct(Product product){
+        String sql = "INSERT INTO Product (id, name, price) VALUES (?, ?, ?)";
         jdbcClient.sql(sql)
-                .param(product.getUUID())
+                .param(product.getId())
                 .param(product.getName())
                 .param(product.getPrice())
-                .param(product.getCreated())
                 .update();
+    }
 
-        System.out.println("Inserted Sucessfully");
+    public void  updateProduct(Integer id,Product product){
+        String sql = "UPDATE product SET name = ?, price = ? WHERE id = ?";
+        jdbcClient.sql(sql).param(product.getName()).param(product.getPrice()).param(id).update();
+    }
+
+    public void deleteProduct(Integer id){
+        String sql = "DELETE FROM product WHERE id = ?";
+        jdbcClient.sql(sql).param(id).update();
     }
 }
