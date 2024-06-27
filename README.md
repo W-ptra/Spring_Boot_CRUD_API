@@ -129,6 +129,7 @@ docker run -d \
 http://localhost:8080/api/product
 ```
 Note: Please wait around 2 - 3 minutes and refresh the page to see the product data  
+  
 5. Clean Up
 ```
 docker stop spring-boot-api mysql
