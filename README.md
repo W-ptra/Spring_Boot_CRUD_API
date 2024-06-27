@@ -110,6 +110,7 @@ docker run -d \
 docker network inspect spring_network
 ```
 2. copy the ` "IPv4Address"` of `mysql`'s container, below is the example output  
+  
 ![img](https://drive.google.com/uc?export=view&id=16fi-0ccYZrKtXTZHLrF9zAXr6awsFpaD) 
 3. Paste it on `URL="jdbc:mysql://172.21.0.2:3306/my_db"`
 ```
