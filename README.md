@@ -112,7 +112,7 @@ docker network inspect spring_network
 2. copy the ` "IPv4Address"` of `mysql`'s container, below is the example output  
   
 ![img](https://drive.google.com/uc?export=view&id=16fi-0ccYZrKtXTZHLrF9zAXr6awsFpaD) 
-3. Paste it on `URL="jdbc:mysql://172.21.0.2:3306/my_db"`
+3. Paste it on `URL="jdbc:mysql://172.21.0.2:3306/my_db"` and run the script
 ```
 docker run -d \
     --name spring-boot-api \
@@ -124,12 +124,12 @@ docker run -d \
     -e PASSWORD="root" \
     wisnup001binus/spring-boot-crudapi:1.0
 ```
-2. Open browser and paste following URL
+4. Open browser and paste following URL
 ```
 http://localhost:8080/api/product
 ```
 Note: Please wait around 2 - 3 minutes and refresh the page to see the product data
-3. Clean Up
+5. Clean Up
 ```
 docker stop spring-boot-api mysql
 docker remove spring-boot-api mysql
